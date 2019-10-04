@@ -117,8 +117,13 @@ def process_corpus(corpus_name):
     # for i in range(0, 10):
     #     print(sorted_d2[i])
 
-    
+
     cfdist = ConditionalFreqDist()
+    for word in wordStory1:
+        condition = len(word)
+        cfdist[condition][word] += 1
+ 
+    print(cfdist)
 
 
     pass
