@@ -3,6 +3,7 @@
 import nltk, zipfile, argparse
 import numpy
 from nltk.tokenize import sent_tokenize, word_tokenize
+import operator
 ###############################################################################
 ## Utility Functions ##########################################################
 ###############################################################################
@@ -87,7 +88,11 @@ def process_corpus(corpus_name):
     for i in corpus3:
         dict0[i] = corpus2.count(i)
 
-    print(dict0)
+    sorted_d = list(sorted(dict0.items(), key=operator.itemgetter(1)))
+    sorted_d.reverse()
+    # print(sorted_d[::-1])
+    for i in range(0, 10):
+        print(sorted_d[i])
 
 
 
