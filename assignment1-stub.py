@@ -3,6 +3,7 @@
 import nltk, zipfile, argparse
 import numpy
 from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.probability import ConditionalFreqDist, FreqDist
 import operator
 ###############################################################################
 ## Utility Functions ##########################################################
@@ -90,10 +91,34 @@ def process_corpus(corpus_name):
 
     sorted_d = list(sorted(dict0.items(), key=operator.itemgetter(1)))
     sorted_d.reverse()
-    # print(sorted_d[::-1])
+  
     for i in range(0, 10):
         print(sorted_d[i])
 
+    
+  
+
+    fDist = FreqDist()
+    # print(wordStory1)
+    
+    for word in wordStory1:
+        fDist[word.lower()] += 1
+
+    print(fDist)
+    dict4fDist = {}
+    for word in fDist:
+        dict4fDist[word] = fDist.freq(word)
+
+        # print ("Frequency of", word, fDist.freq(word))
+
+    # print(dict4fDist)
+    sorted_d2 = list(sorted(dict4fDist.items(), key=operator.itemgetter(1)))
+    sorted_d2.reverse()
+    # for i in range(0, 10):
+    #     print(sorted_d2[i])
+
+    
+    cfdist = ConditionalFreqDist()
 
 
     pass
