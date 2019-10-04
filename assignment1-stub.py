@@ -1,10 +1,11 @@
 #!/usr/bin/env python
-
+import contextlib
 import nltk, zipfile, argparse
 import numpy
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.probability import ConditionalFreqDist, FreqDist
 import operator
+from contextlib import redirect_stdout
 ###############################################################################
 ## Utility Functions ##########################################################
 ###############################################################################
@@ -117,13 +118,24 @@ def process_corpus(corpus_name):
     # for i in range(0, 10):
     #     print(sorted_d2[i])
 
-
+    
     cfdist = ConditionalFreqDist()
-    for word in wordStory1:
-        condition = len(word)
-        cfdist[condition][word] += 1
+    for i in range(len(corpusTags)):
+        for j in range(len(corpusTags[i])):
+            condition = corpusTags[i][j][1]
+    
+            word = corpusTags[i][j][0]
+            
+            cfdist[condition][word.lower()] += 1
+
+        
  
-    print(cfdist)
+    fileOut = open(corpus_name +'-pos-word-freq.txt', 'w') 
+    with redirect_stdout(fileOut):
+        cfdist.tabulate()
+    fileOut.close()
+
+    
 
 
     pass
