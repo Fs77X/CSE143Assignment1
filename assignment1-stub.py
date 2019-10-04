@@ -62,22 +62,27 @@ def process_corpus(corpus_name):
             wordStory1.append(wordStory[i][j])
 
     uniqueWord = set(wordStory1)
+    corpus1 = nltk.pos_tag(wordStory1)
+    corpus1 = list(set(corpus1))
+
+    # print(corpus1)
+   
+   
     print("3: length:" + str(len(uniqueWord)))
 
-    corpus1 = []
-    uniqueWord = list(uniqueWord)
+    # uniqueWord = list(uniqueWord)
     # print(uniqueWord)
     # for i in uniqueWord:
-    corpus1 = nltk.pos_tag(uniqueWord)
+    
 
     # print(len(corpus1))
     corpus2 = []
-    
     for i in range(len(corpus1)):
         corpus2.append(corpus1[i][1])
 
-    # print(len(corpus2))
+   
     corpus3 = set(corpus2)
+  
     dict0 = {}
     for i in corpus3:
         dict0[i] = corpus2.count(i)
