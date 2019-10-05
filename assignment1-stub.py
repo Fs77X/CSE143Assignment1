@@ -117,17 +117,21 @@ def process_corpus(corpus_name):
     sorted_d2.reverse()
     # for i in range(0, 10):
     #     print(sorted_d2[i])
-
+  
     
-    cfdist = ConditionalFreqDist()
+   
+    corpustag2 = []
     for i in range(len(corpusTags)):
         for j in range(len(corpusTags[i])):
-            condition = corpusTags[i][j][1]
+            corpustag2.append((corpusTags[i][j][0].lower(), corpusTags[i][j][1]))
+            # condition = corpusTags[i][j][1]
     
-            word = corpusTags[i][j][0]
+            # word = corpusTags[i][j][0]
             
-            cfdist[condition][word.lower()] += 1
-
+            # cfdist[condition][word.lower()] += 1
+    
+    cfdist = ConditionalFreqDist(corpustag2)
+    print(cfdist)
         
  
     fileOut = open(corpus_name +'-pos-word-freq.txt', 'w') 
@@ -135,7 +139,7 @@ def process_corpus(corpus_name):
         cfdist.tabulate()
     fileOut.close()
 
-    
+  
 
 
     pass
