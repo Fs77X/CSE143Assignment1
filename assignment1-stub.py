@@ -163,8 +163,11 @@ def process_corpus(corpus_name):
     print(sorted_dJJ[0])
     print(sorted_dRB[0])
 
+    print(type(wordStory1))
+    print(len(wordStory1))
     text = nltk.Text(wordStory1)
-    text.collocations()
+    print(type(text))
+    print('; '.join(text.collocation_list()))
 
         
   
