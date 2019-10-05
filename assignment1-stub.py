@@ -131,7 +131,7 @@ def process_corpus(corpus_name):
             # cfdist[condition][word.lower()] += 1
     
     cfdist = ConditionalFreqDist(corpustag2)
-    print(cfdist)
+
         
  
     fileOut = open(corpus_name +'-pos-word-freq.txt', 'w') 
@@ -139,6 +139,34 @@ def process_corpus(corpus_name):
         cfdist.tabulate()
     fileOut.close()
 
+    dict4NN = {}
+    dict4VBD = {}
+    dict4JJ = {}
+    dict4RB = {}
+
+    for word in cfdist:
+        dict4NN[word] = cfdist[word]['NN']
+        dict4VBD[word] = cfdist[word]['VBD']
+        dict4JJ[word] = cfdist[word]['JJ']
+        dict4RB[word] = cfdist[word]['RB']
+
+    sorted_dNN = list(sorted(dict4NN.items(), key=operator.itemgetter(1)))
+    sorted_dNN.reverse()
+    sorted_dVBD = list(sorted(dict4VBD.items(), key=operator.itemgetter(1)))
+    sorted_dVBD.reverse()
+    sorted_dJJ = list(sorted(dict4JJ.items(), key=operator.itemgetter(1)))
+    sorted_dJJ.reverse()
+    sorted_dRB = list(sorted(dict4RB.items(), key=operator.itemgetter(1)))
+    sorted_dRB.reverse()
+    print(sorted_dNN[0])
+    print(sorted_dVBD[0])
+    print(sorted_dJJ[0])
+    print(sorted_dRB[0])
+
+    text = nltk.Text(wordStory1)
+    text.collocations()
+
+        
   
 #give list of numbers, list.max
 
