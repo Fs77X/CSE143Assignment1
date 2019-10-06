@@ -144,6 +144,7 @@ def process_corpus(corpus_name):
     dict4JJ = {}
     dict4RB = {}
 
+    text = nltk.Text(wordStory1)
     for word in cfdist:
         dict4NN[word] = cfdist[word]['NN']
         dict4VBD[word] = cfdist[word]['VBD']
@@ -159,13 +160,17 @@ def process_corpus(corpus_name):
     sorted_dRB = list(sorted(dict4RB.items(), key=operator.itemgetter(1)))
     sorted_dRB.reverse()
     print(sorted_dNN[0])
+    print(text.similar(sorted_dNN[0][0]))
     print(sorted_dVBD[0])
+    print(text.similar(sorted_dVBD[0][0]))
     print(sorted_dJJ[0])
+    print(text.similar(sorted_dJJ[0][0]))
     print(sorted_dRB[0])
+    print(text.similar(sorted_dRB[0][0]))
 
     print(type(wordStory1))
     print(len(wordStory1))
-    text = nltk.Text(wordStory1)
+    
     print(type(text))
     print('; '.join(text.collocation_list()))
 
