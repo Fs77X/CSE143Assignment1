@@ -65,9 +65,7 @@ def process_corpus(corpus_name):
     for i in range(len(wordStory)):
         corpusTags.append(nltk.pos_tag(wordStory[i]))
 
-    # print(corpusTags)
-    
-    #for sentence, if sentence is 0, then yeet else print newline, then print shit
+
     fileOut = open(corpus_name +'-pos.txt', 'w') 
     for i in range(len(corpusTags)):
         if i != 0:
@@ -78,7 +76,6 @@ def process_corpus(corpus_name):
     fileOut.close()
 
 
-    # print(corpusTags)
     wordStory1 = []
     
     for i in range(len(wordStory)):
@@ -89,22 +86,15 @@ def process_corpus(corpus_name):
     corpus1 = nltk.pos_tag(wordStory1)
     corpus1 = list(set(corpus1))
 
-    # print(corpus1)
-   
+
    
     print("3: length:" + str(len(uniqueWord)))
 
-    # uniqueWord = list(uniqueWord)
-    # print(uniqueWord)
-    # for i in uniqueWord:
-    
-
-    # print(len(corpus1))
+ 
     corpus2 = []
     for i in range(len(corpus1)):
         corpus2.append(corpus1[i][1])
 
-   
     corpus3 = set(corpus2)
   
     dict0 = {}
@@ -118,22 +108,17 @@ def process_corpus(corpus_name):
         print(sorted_d[i])
 
     
-  
-
     fDist = FreqDist()
-    # print(wordStory1)
+ 
     
     for word in wordStory1:
         fDist[word.lower()] += 1
 
-    # print(fDist)
     dict4fDist = {}
     for word in fDist:
         dict4fDist[word] = fDist.freq(word)
 
-        # print ("Frequency of", word, fDist.freq(word))
 
-    # print(dict4fDist)
     sorted_d2 = list(sorted(dict4fDist.items(), key=operator.itemgetter(1)))
     sorted_d2.reverse()
 
@@ -141,32 +126,21 @@ def process_corpus(corpus_name):
     for word in sorted_d2:
         fileOut.write('The word ' + word[0] + ' has frequency of ' + str(word[1]) + '\n')
 
-
     fileOut.close()
-    # for i in range(0, 10):
-    #     print(sorted_d2[i])
-  
-    
-   
+
     corpustag2 = []
     for i in range(len(corpusTags)):
         for j in range(len(corpusTags[i])):
             corpustag2.append((corpusTags[i][j][0], corpusTags[i][j][1]))
-            # condition = corpusTags[i][j][1]
     
-            # word = corpusTags[i][j][0]
-            
-            # cfdist[condition][word.lower()] += 1
     
     cfdist = ConditionalFreqDist(corpustag2)
-
-        
- 
     fileOut = open(corpus_name +'-pos-word-freq.txt', 'w') 
     with redirect_stdout(fileOut):
         cfdist.tabulate()
     fileOut.close()
 
+    
     dict4NN = {}
     dict4VBD = {}
     dict4JJ = {}
@@ -196,15 +170,8 @@ def process_corpus(corpus_name):
     print(sorted_dRB[0])
     print(text.similar(sorted_dRB[0][0]))
 
-    print(type(wordStory1))
-    print(len(wordStory1))
-    
-    print(type(text))
     print('; '.join(text.collocation_list()))
 
-        
-  
-#give list of numbers, list.max
 
     pass
 
