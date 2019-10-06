@@ -210,7 +210,7 @@ The token during has frequency of 8
 The token gotv has frequency of 7
 The token committee has frequency of 7
 The token station has frequency of 7
-The token í has frequency of 7
+The token ‚Äô has frequency of 7
 The token candidates has frequency of 7
 The token amelito has frequency of 7
 The token ronnie has frequency of 7
@@ -285,7 +285,7 @@ The token 5 has frequency of 6
 The token office has frequency of 6
 The token tired has frequency of 5
 The token shafik has frequency of 5
-The token î has frequency of 5
+The token ‚Äù has frequency of 5
 The token presidential has frequency of 5
 The token clouds has frequency of 5
 The token bags has frequency of 5
@@ -453,7 +453,7 @@ The token nov. has frequency of 3
 The token president has frequency of 3
 The token queue has frequency of 3
 The token army has frequency of 3
-The token ì has frequency of 3
+The token ‚Äú has frequency of 3
 The token egyptian has frequency of 3
 The token 2012 has frequency of 3
 The token process has frequency of 3
@@ -931,7 +931,7 @@ The token pushed has frequency of 2
 The token neighbors has frequency of 2
 The token north has frequency of 2
 The token moving has frequency of 2
-The token butÖ has frequency of 2
+The token but‚Ä¶ has frequency of 2
 The token plenty has frequency of 2
 The token canyon has frequency of 2
 The token saddle has frequency of 2
@@ -2196,7 +2196,7 @@ The token herded has frequency of 1
 The token girlie has frequency of 1
 The token intentions has frequency of 1
 The token admit has frequency of 1
-The token wellÖ has frequency of 1
+The token well‚Ä¶ has frequency of 1
 The token driveways has frequency of 1
 The token highway has frequency of 1
 The token roaming has frequency of 1
@@ -2206,7 +2206,7 @@ The token aim has frequency of 1
 The token brave has frequency of 1
 The token helped has frequency of 1
 The token 'what has frequency of 1
-The token thoughtÖ has frequency of 1
+The token thought‚Ä¶ has frequency of 1
 The token fence has frequency of 1
 The token shoo has frequency of 1
 The token yard has frequency of 1
@@ -2241,8 +2241,8 @@ The token goofy has frequency of 1
 The token airman has frequency of 1
 The token wracking has frequency of 1
 The token nerve has frequency of 1
-The token nightóit has frequency of 1
-The token thingóat has frequency of 1
+The token night‚Äîit has frequency of 1
+The token thing‚Äîat has frequency of 1
 The token wearing has frequency of 1
 The token rushing has frequency of 1
 The token 200 has frequency of 1
@@ -2279,7 +2279,7 @@ The token relive has frequency of 1
 The token motivation has frequency of 1
 The token waking has frequency of 1
 The token involves has frequency of 1
-The token againóa has frequency of 1
+The token again‚Äîa has frequency of 1
 The token blissful has frequency of 1
 The token technically has frequency of 1
 The token allotted has frequency of 1

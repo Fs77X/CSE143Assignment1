@@ -117,18 +117,28 @@ def process_corpus(corpus_name):
         for j in range(len(wordStory[i])):
             wordStory1.append(wordStory[i][j])
 
+
+
+    wordStorylower = []
+    for i in range(len(wordStory1)):
+        wordStorylower.append(wordStory1[i].lower())
+
+    # print(wordStorylower)
+
+    corpus0 = nltk.pos_tag(wordStory1)
     uniqueWord = set(wordStory1)
+    uW = set(wordStorylower)
     corpus1 = nltk.pos_tag(wordStory1)
     corpus1 = list(set(corpus1))
 
 
    
-    print("3. Vocabulary size of the corpus:" + str(len(uniqueWord)))
+    print("3. Vocabulary size of the corpus:" + str(len(uW)))
 
  
     corpus2 = []
-    for i in range(len(corpus1)):
-        corpus2.append(corpus1[i][1])
+    for i in range(len(corpus0)):
+        corpus2.append(corpus0[i][1])
 
     corpus3 = set(corpus2)
   
@@ -142,7 +152,7 @@ def process_corpus(corpus_name):
     print('4. The most frequent part-of-speech tag is ' + sorted_d[0][0] + ' with frequeency of ' + str(sorted_d[0][1]))
     print('5.  Frequencies  and  relative  frequencies  of  all  part-of-speech  tags  in  the  corpus  in  decreasing  order  of frequency are: ')
     for i in range(0, 10):
-        print(sorted_d[i][0] +  ' has frequency ' + str(sorted_d[i][1]) + ' and relative frequency of ' + str( "{:.2E}".format(Decimal(sorted_d[i][1]/counter))))
+        print(sorted_d[i][0] +  ' has frequency ' + str(sorted_d[i][1]) + ' and relative frequency of ' + str( "{:.3E}".format(Decimal(sorted_d[i][1]/counter))))
 
     
     fDist = FreqDist()
