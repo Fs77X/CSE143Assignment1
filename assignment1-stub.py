@@ -40,6 +40,14 @@ def process_corpus(corpus_name):
     for i in range(len(corpus_contents)):
         sentenceStory.append(sent_tokenize(corpus_contents[i]))
 
+    sentenceTag = []
+  
+
+    # for i in range(len(sentenceStory)):
+    #     sentenceTag.append(nltk.pos_tag(word_tokenize(sentenceStory[i])))
+
+    # print(sentenceTag)
+
     # print(sentenceStory)
 
     for i in range(len(sentenceStory)):
@@ -56,6 +64,19 @@ def process_corpus(corpus_name):
     # print(wordStory)
     for i in range(len(wordStory)):
         corpusTags.append(nltk.pos_tag(wordStory[i]))
+
+    # print(corpusTags)
+    
+    #for sentence, if sentence is 0, then yeet else print newline, then print shit
+    fileOut = open(corpus_name +'-pos.txt', 'w') 
+    for i in range(len(corpusTags)):
+        if i != 0:
+            fileOut.write('\n')
+        for word in corpusTags[i]:
+            fileOut.write(word[0] + '/' + word[1] + ' ')
+
+    fileOut.close()
+
 
     # print(corpusTags)
     wordStory1 = []
@@ -105,7 +126,7 @@ def process_corpus(corpus_name):
     for word in wordStory1:
         fDist[word.lower()] += 1
 
-    print(fDist)
+    # print(fDist)
     dict4fDist = {}
     for word in fDist:
         dict4fDist[word] = fDist.freq(word)
@@ -115,6 +136,13 @@ def process_corpus(corpus_name):
     # print(dict4fDist)
     sorted_d2 = list(sorted(dict4fDist.items(), key=operator.itemgetter(1)))
     sorted_d2.reverse()
+
+    fileOut = open(corpus_name +'-word-freq.txt', 'w') 
+    for word in sorted_d2:
+        fileOut.write('The word ' + word[0] + ' has frequency of ' + str(word[1]) + '\n')
+
+
+    fileOut.close()
     # for i in range(0, 10):
     #     print(sorted_d2[i])
   
@@ -123,7 +151,7 @@ def process_corpus(corpus_name):
     corpustag2 = []
     for i in range(len(corpusTags)):
         for j in range(len(corpusTags[i])):
-            corpustag2.append((corpusTags[i][j][0].lower(), corpusTags[i][j][1]))
+            corpustag2.append((corpusTags[i][j][0], corpusTags[i][j][1]))
             # condition = corpusTags[i][j][1]
     
             # word = corpusTags[i][j][0]
