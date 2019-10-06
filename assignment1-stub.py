@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import contextlib
 import nltk, zipfile, argparse
+from decimal import Decimal
 import numpy
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.probability import ConditionalFreqDist, FreqDist
@@ -59,7 +60,7 @@ def process_corpus(corpus_name):
         for j in range(len(wordStory[i])):
             counter = counter + 1
 
-    print("2: Total words: " + str(counter))
+    print("2. Total words in the corpus: " + str(counter))
     corpusTags = []
     # print(wordStory)
     for i in range(len(wordStory)):
@@ -88,7 +89,7 @@ def process_corpus(corpus_name):
 
 
    
-    print("3: length:" + str(len(uniqueWord)))
+    print("3. Vocabulary size of the corpus:" + str(len(uniqueWord)))
 
  
     corpus2 = []
@@ -103,9 +104,11 @@ def process_corpus(corpus_name):
 
     sorted_d = list(sorted(dict0.items(), key=operator.itemgetter(1)))
     sorted_d.reverse()
-  
+    
+    print('4. The most frequent part-of-speech tag is ' + sorted_d[0][0] + ' with frequeency of ' + str(sorted_d[0][1]))
+    print('5.  Frequencies  and  relative  frequencies  of  all  part-of-speech  tags  in  the  corpus  in  decreasing  order  of frequency are: ')
     for i in range(0, 10):
-        print(sorted_d[i])
+        print(sorted_d[i][0] +  ' has frequency ' + str(sorted_d[i][1]) + ' and relative frequency of ' + str( "{:.2E}".format(Decimal(sorted_d[i][1]/counter))))
 
     
     fDist = FreqDist()
@@ -153,6 +156,8 @@ def process_corpus(corpus_name):
         dict4JJ[word] = cfdist[word]['JJ']
         dict4RB[word] = cfdist[word]['RB']
 
+    print('6.  The most frequent word in the POS:')
+
     sorted_dNN = list(sorted(dict4NN.items(), key=operator.itemgetter(1)))
     sorted_dNN.reverse()
     sorted_dVBD = list(sorted(dict4VBD.items(), key=operator.itemgetter(1)))
@@ -161,16 +166,16 @@ def process_corpus(corpus_name):
     sorted_dJJ.reverse()
     sorted_dRB = list(sorted(dict4RB.items(), key=operator.itemgetter(1)))
     sorted_dRB.reverse()
-    print(sorted_dNN[0])
-    print(text.similar(sorted_dNN[0][0]))
-    print(sorted_dVBD[0])
-    print(text.similar(sorted_dVBD[0][0]))
-    print(sorted_dJJ[0])
-    print(text.similar(sorted_dJJ[0][0]))
-    print(sorted_dRB[0])
-    print(text.similar(sorted_dRB[0][0]))
+    print('The most frequent word in the POS NN is : ' + str(sorted_dNN[0][0]) + ' and its similar word are:', end=" ") 
+    print(str(text.similar(sorted_dNN[0][0]))) 
+    print('The most frequent word in the POS VBD is : ' + str(sorted_dVBD[0][0]) + ' and its similar word are:', end=" ")
+    print(str(text.similar(sorted_dVBD[0][0])))
+    print('The most frequent word in the POS JJ is : ' +  str(sorted_dJJ[0][0]) + ' and its similar word are:' , end=" ") 
+    print(str(text.similar(sorted_dJJ[0][0])))
+    print('The most frequent word in the POS RB is : ' +  str(sorted_dRB[0][0]) + ' and its similar word are:' , end=" ")
+    print(str(text.similar(sorted_dRB[0][0])))
 
-    print('; '.join(text.collocation_list()))
+    print('7.  Collocations: ' + '; '.join(text.collocation_list()))
 
 
     pass
