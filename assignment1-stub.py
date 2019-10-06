@@ -41,19 +41,51 @@ def process_corpus(corpus_name):
     for i in range(len(corpus_contents)):
         sentenceStory.append(sent_tokenize(corpus_contents[i]))
 
-    sentenceTag = []
-  
+    stories = []
+    for i in corpus_contents:
+        stories.append([i])
 
-    # for i in range(len(sentenceStory)):
-    #     sentenceTag.append(nltk.pos_tag(word_tokenize(sentenceStory[i])))
+    # print(stories)
+    senstor = []
+    for i in range(len(stories)):
+        senstor.append([])
+        # print(sent_tokenize(stories[i][0]))
+        for sentence in sent_tokenize(stories[i][0]):
 
-    # print(sentenceTag)
+            senstor[i].append(sentence) 
 
-    # print(sentenceStory)
+    # print(senstor)
+
+    wordstor = []
+    for i in range(len(senstor)):
+        wordstor.append([])
+        for j in range(len(senstor[i])):
+            wordstor[i].append([])
+            for word in word_tokenize(senstor[i][j]):
+                wordstor[i][j].append(word)
+            
+
+    # print(wordstor)
+
+    corpstor = []
+    for i in range(len(wordstor)):
+        corpstor.append([])
+        for j in range(len(wordstor[i])):
+            corpstor[i].append(nltk.pos_tag(wordstor[i][j]))
+            # for word in wordstor[i][j]:
+            #     corpstor[i][j].append(nltk.pos_tag(word))
+
+
+    # print(corpstor)
+
+
+        
 
     for i in range(len(sentenceStory)):
         for j in range(len(sentenceStory[i])):
             wordStory.append(word_tokenize(sentenceStory[i][j]))
+
+    # print(wordStory)
 
     counter = 0
     for i in range(len(wordStory)):
@@ -68,11 +100,13 @@ def process_corpus(corpus_name):
 
 
     fileOut = open(corpus_name +'-pos.txt', 'w') 
-    for i in range(len(corpusTags)):
-        if i != 0:
+    for i in range(len(corpstor)):
+        for sentence in corpstor[i]:
+            for word in sentence:
+                fileOut.write(word[0] + '/' + word[1] + ' ')
             fileOut.write('\n')
-        for word in corpusTags[i]:
-            fileOut.write(word[0] + '/' + word[1] + ' ')
+            
+        fileOut.write('\n\n')
 
     fileOut.close()
 
@@ -119,7 +153,7 @@ def process_corpus(corpus_name):
 
     dict4fDist = {}
     for word in fDist:
-        dict4fDist[word] = fDist.freq(word)
+        dict4fDist[word] = fDist[word]
 
 
     sorted_d2 = list(sorted(dict4fDist.items(), key=operator.itemgetter(1)))
@@ -127,7 +161,7 @@ def process_corpus(corpus_name):
 
     fileOut = open(corpus_name +'-word-freq.txt', 'w') 
     for word in sorted_d2:
-        fileOut.write('The word ' + word[0] + ' has frequency of ' + str(word[1]) + '\n')
+        fileOut.write('The token ' + word[0] + ' has frequency of ' + str(word[1]) + '\n')
 
     fileOut.close()
 
